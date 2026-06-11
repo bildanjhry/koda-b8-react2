@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import './index.css'
 
-function SearchInput(handleSearch) {
-  
+function SearchInput({handleSearch}) {
   return (
       <>
         <form 
-        onSubmit={function(e){handleSearch(e)}}
+        onSubmit={handleSearch}
         action="" className='w-full h-[3.5rem]'>
           <input 
           placeholder="Type a character's name.."
@@ -22,16 +21,16 @@ function SearchInput(handleSearch) {
   )
 }
 
-
 function App() {
   const [datas, setDatas] = useState([])
   const [loading, setLoading] = useState(false)
+  const [reloadParams, setReloadParams] = useState(false)
 
   useEffect(() => {
-      async function getData(params){
+      async function getData(){
         setLoading(true)
         let apiUrl = `https://rickandmortyapi.com/api/character`
-        if(params) apiUrl = `https://rickandmortyapi.com/api/character?name=${params}`
+        if(reloadParams) apiUrl = `https://rickandmortyapi.com/api/character?name=${reloadParams}`
         
         const res = await fetch(apiUrl)
         const data = await res.json()
@@ -39,12 +38,12 @@ function App() {
         setLoading(false)
       } 
       getData()
-  },[setDatas, setLoading])
+  },[setDatas, setLoading, reloadParams, setReloadParams])
   
   function handleSearch(e){
     e.preventDefault()
     const data = new FormData(e.target)
-    console.log(data.get("name"))
+    setReloadParams(data.get("name"))
   }
 
   return (
