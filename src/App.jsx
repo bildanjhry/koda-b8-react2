@@ -6,15 +6,15 @@ function SearchInput({handleSearch}) {
       <>
         <form 
         onSubmit={handleSearch}
-        action="" className='w-full h-[3.5rem] items-center flex flex-row justify-center'>
+        action="" className='w-full h-[3.3rem] items-center flex flex-row justify-between'>
           <input 
           placeholder="Type a character's name.."
-          className='w-[90%] h-[100%] bg-white rounded-l-md pl-4 pr-4 text-slate-800'
+          className='w-[89%] h-[100%] bg-white rounded-md pl-4 pr-4 text-slate-800'
           type="search" name="name" id="name" />
           <button 
           type='submit'
           className='w-[10%] cursor-pointer flex justify-center items-center 
-          bg-slate-700 hover:bg-slate-500 h-[100%] rounded-r-md'>
+          bg-[#7b80a0] hover:bg-slate-500 h-[100%] rounded-md'>
             <img src="../public/search-icon.png" alt="" className='w-5 h-5'/>
           </button>
         </form>
@@ -24,17 +24,18 @@ function SearchInput({handleSearch}) {
 
 function CardList({datas, loading}) {
   return (
-    <div className='w-full flex gap-4 flex-wrap'>
+    <div className='w-full flex gap-4 flex-wrap mt-2'>
       {
       loading ?
       <SkeletonCardList/> :
       datas?.map((item, index) => ((
           <div 
           key={index}
-          className='md:h-[20rem] h-[17rem] w-[11rem] bg-white md:w-[16.1rem] rounded-md flex flex-col cursor-pointer hover:scale-x-100'>
+          className='md:h-[20rem] h-[17rem] w-[11rem] bg-[#7b80a0] md:w-[16.1rem] rounded-md flex flex-col 
+          cursor-pointer hover:scale-110'>
             <img src={item?.image} alt="" className='w-full h-[80%] rounded-t-md' />
             <div className='w-full h-[20%] flex justify-center items-center'>
-              <h4 className='text-slate-900 font-semibold'>{item.name}</h4>
+              <h4 className='text-slate-100 font-semibold'>{item.name}</h4>
             </div>
           </div>
         )))}
@@ -110,9 +111,9 @@ function App() {
   }
 
   return (
-    <div className='w-full h-fit flex flex-col items-center justify-content mt-12'>
+    <div className='w-full h-fit flex flex-col items-center justify-content mt-2 mb-12'>
       <div className='w-[80%] gap-6 flex flex-col items-center h-fit'>
-        <h1 className='mb-12'>Rick & Morty's Characters</h1>
+        <h1 className=' text-lg'>Rick & Morty's Characters</h1>
         <SearchInput handleSearch={handleSearch} />
         {datas ? 
         <CardList datas={datas} loading={loading}/>
