@@ -9,7 +9,7 @@ function SearchInput({handleSearch}) {
         action="" className='w-full h-[3.5rem]'>
           <input 
           placeholder="Type a character's name.."
-          className='w-[90%] h-[100%] bg-white rounded-l-md pl-4 text-slate-800'
+          className='w-[90%] h-[100%] bg-white rounded-l-md pl-4 pr-4 text-slate-800'
           type="search" name="name" id="name" />
           <button 
           type='submit'
@@ -25,7 +25,8 @@ function CardList({datas, loading}) {
   return (
     <div className='w-full flex gap-4 flex-wrap'>
       {
-      !loading &&
+      loading ?
+      <SkeletonCardList/> :
       datas?.map((item, index) => ((
           <div 
           key={index}
@@ -36,6 +37,49 @@ function CardList({datas, loading}) {
             </div>
           </div>
         )))}
+    </div>
+  )
+}
+
+function SkeletonCardList(){
+  return(
+    <div className='w-full flex gap-4 flex-wrap'>
+        <div className='h-[20rem] bg-[#5d617a] w-[16rem] 
+          rounded-md flex flex-col cursor-pointer animate-pulse
+          hover:scale-x-100'>
+          <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
+          <div className='w-full h-[20%] flex justify-center items-center'>
+            <span className='w-[60%] h-[15px] bg-[#7b80a0] rounded-md animate-pulse'></span>
+          </div>
+        </div> 
+
+        <div className='h-[20rem] bg-[#5d617a] w-[16rem] 
+          rounded-md flex flex-col cursor-pointer animate-pulse
+          hover:scale-x-100'>
+          <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
+          <div className='w-full h-[20%] flex justify-center items-center'>
+            <span className='w-[60%] h-[15px] bg-[#7b80a0] rounded-md animate-pulse'></span>
+          </div>
+        </div> 
+
+        <div className='h-[20rem] bg-[#5d617a] w-[16rem] 
+          rounded-md flex flex-col cursor-pointer animate-pulse
+          hover:scale-x-100'>
+          <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
+          <div className='w-full h-[20%] flex justify-center items-center'>
+          <span className='w-[60%] h-[15px] bg-[#7b80a0] rounded-md animate-pulse'></span>
+        </div>
+
+        </div> 
+        <div className='h-[20rem] bg-[#5d617a] w-[16rem] 
+          rounded-md flex flex-col cursor-pointer animate-pulse
+          hover:scale-x-100'>
+          <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
+          <div className='w-full h-[20%] flex justify-center items-center'>
+            <span className='w-[60%] h-[15px] bg-[#7b80a0] rounded-md animate-pulse'></span>
+          </div>
+        </div>   
+
     </div>
   )
 }
@@ -74,6 +118,5 @@ function App() {
     </div>
   )
 }
-
 
 export default App
