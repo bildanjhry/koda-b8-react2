@@ -1,16 +1,17 @@
-# React + Vite
+# Rick & Morty Characters set
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Kumpulan lis dari karakter-karakter Rick & Morty. Program ini mengkonsumsi data melalui Open API Rick & Morty yang di Map kedalam aplikasi berbasis React.
+--------------------
+apiUrl : https://rickandmortyapi.com/api/character
 
-Currently, two official plugins are available:
+Tech Stacks:
+- React JS
+- TailwindCss
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Preview Demo
+| Cari semua ✅                       | Cari berdasarkan name ✅            |
+|:------------------------------------|-------------------------------------:|
+| ![alt text](src/assets/image.png)   | ![alt text](src/assets/image-1.png)            ||
+|                                     |  
+| Skeleton saat data sedang diload    |  Tidak ditemukan
+| ![alt text](src/assets/ske-image.png)|  ![alt text](src/assets/image-not-found.png) |
