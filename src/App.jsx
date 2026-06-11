@@ -110,10 +110,13 @@ function App() {
 
   return (
     <div className='w-full h-fit flex flex-col items-center justify-content mt-12'>
-      <div className='w-[80%] gap-6 flex flex-col items-center'>
-        <h1>Rick & Morty's Characters</h1>
+      <div className='w-[80%] gap-6 flex flex-col items-center h-fit'>
+        <h1 className='mb-12'>Rick & Morty's Characters</h1>
         <SearchInput handleSearch={handleSearch} />
+        {datas ? 
         <CardList datas={datas} loading={loading}/>
+        : 
+        <h2 className='pt-12 justify-self-center'>Opps character not found</h2>}
       </div>
     </div>
   )
