@@ -6,15 +6,16 @@ function SearchInput({handleSearch}) {
       <>
         <form 
         onSubmit={handleSearch}
-        action="" className='w-full h-[3.5rem]'>
+        action="" className='w-full h-[3.5rem] items-center flex flex-row justify-center'>
           <input 
           placeholder="Type a character's name.."
           className='w-[90%] h-[100%] bg-white rounded-l-md pl-4 pr-4 text-slate-800'
           type="search" name="name" id="name" />
           <button 
           type='submit'
-          className='w-[10%] cursor-pointer  bg-slate-700 hover:bg-slate-500 h-[100%] rounded-r-md'>
-            Search
+          className='w-[10%] cursor-pointer flex justify-center items-center 
+          bg-slate-700 hover:bg-slate-500 h-[100%] rounded-r-md'>
+            <img src="../public/search-icon.png" alt="" className='w-5 h-5'/>
           </button>
         </form>
       </>    
@@ -30,7 +31,7 @@ function CardList({datas, loading}) {
       datas?.map((item, index) => ((
           <div 
           key={index}
-          className='h-[20rem] bg-white w-[16rem] rounded-md flex flex-col cursor-pointer hover:scale-x-100'>
+          className='md:h-[20rem] h-[17rem] w-[11rem] bg-white md:w-[16.1rem] rounded-md flex flex-col cursor-pointer hover:scale-x-100'>
             <img src={item?.image} alt="" className='w-full h-[80%] rounded-t-md' />
             <div className='w-full h-[20%] flex justify-center items-center'>
               <h4 className='text-slate-900 font-semibold'>{item.name}</h4>
@@ -44,7 +45,7 @@ function CardList({datas, loading}) {
 function SkeletonCardList(){
   return(
     <div className='w-full flex gap-4 flex-wrap'>
-        <div className='h-[20rem] bg-[#5d617a] w-[16rem] 
+        <div className='h-[20rem] bg-[#5d617a] w-[16.1rem] 
           rounded-md flex flex-col cursor-pointer animate-pulse
           hover:scale-x-100'>
           <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
@@ -53,7 +54,7 @@ function SkeletonCardList(){
           </div>
         </div> 
 
-        <div className='h-[20rem] bg-[#5d617a] w-[16rem] 
+        <div className='h-[20rem] bg-[#5d617a] w-[16.1rem] 
           rounded-md flex flex-col cursor-pointer animate-pulse
           hover:scale-x-100'>
           <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
@@ -62,7 +63,7 @@ function SkeletonCardList(){
           </div>
         </div> 
 
-        <div className='h-[20rem] bg-[#5d617a] w-[16rem] 
+        <div className='h-[20rem] bg-[#5d617a] w-[16.1rem] 
           rounded-md flex flex-col cursor-pointer animate-pulse
           hover:scale-x-100'>
           <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
@@ -71,7 +72,7 @@ function SkeletonCardList(){
         </div>
 
         </div> 
-        <div className='h-[20rem] bg-[#5d617a] w-[16rem] 
+        <div className='h-[20rem] bg-[#5d617a] w-[16.1rem] 
           rounded-md flex flex-col cursor-pointer animate-pulse
           hover:scale-x-100'>
           <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
@@ -116,7 +117,11 @@ function App() {
         {datas ? 
         <CardList datas={datas} loading={loading}/>
         : 
-        <h2 className='pt-12 justify-self-center'>Opps character not found</h2>}
+        <div className='flex w-full gap-4 items-center justify-center'>
+            <img src="../public/search.png" alt="" className='w-8 h-8 mt-10' />
+           <h2 className='pt-10 justify-self-center'>Opps character not found</h2>
+        </div>
+       }
       </div>
     </div>
   )
