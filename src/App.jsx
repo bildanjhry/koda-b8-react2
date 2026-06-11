@@ -23,6 +23,12 @@ function SearchInput({handleSearch}) {
 }
 
 function CardList({datas, loading}) {
+
+  function handleChooseCard(e){
+    const card = e.target.parentElement
+    console.log(card)
+  }
+
   return (
     <div className='w-full flex gap-4 flex-wrap mt-2'>
       {
@@ -31,6 +37,7 @@ function CardList({datas, loading}) {
       datas?.map((item, index) => ((
           <div 
           key={index}
+          onClick={(e) => {handleChooseCard(e)}}
           className='md:h-[20rem] h-[17rem] w-[11rem] bg-[#7b80a0] md:w-[16.1rem] rounded-md flex flex-col 
           cursor-pointer hover:scale-110'>
             <img src={item?.image} alt="" className='w-full h-[80%] rounded-t-md' />
@@ -46,7 +53,7 @@ function CardList({datas, loading}) {
 function SkeletonCardList(){
   return(
     <div className='w-full flex gap-4 flex-wrap'>
-        <div className='h-[20rem] bg-[#5d617a] w-[16.1rem] 
+        <div className='md:h-[20rem] h-[17rem] w-[11rem] bg-[#5d617a] md:w-[16.1rem] 
           rounded-md flex flex-col cursor-pointer animate-pulse
           hover:scale-x-100'>
           <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
@@ -55,7 +62,7 @@ function SkeletonCardList(){
           </div>
         </div> 
 
-        <div className='h-[20rem] bg-[#5d617a] w-[16.1rem] 
+        <div className='md:h-[20rem] h-[17rem] w-[11rem] bg-[#5d617a] md:w-[16.1rem] 
           rounded-md flex flex-col cursor-pointer animate-pulse
           hover:scale-x-100'>
           <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
@@ -64,16 +71,16 @@ function SkeletonCardList(){
           </div>
         </div> 
 
-        <div className='h-[20rem] bg-[#5d617a] w-[16.1rem] 
+        <div className='md:h-[20rem] h-[17rem] w-[11rem] bg-[#5d617a] md:w-[16.1rem] 
           rounded-md flex flex-col cursor-pointer animate-pulse
           hover:scale-x-100'>
           <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
           <div className='w-full h-[20%] flex justify-center items-center'>
-          <span className='w-[60%] h-[15px] bg-[#7b80a0] rounded-md animate-pulse'></span>
+            <span className='w-[60%] h-[15px] bg-[#7b80a0] rounded-md animate-pulse'></span>
+          </div>
         </div>
 
-        </div> 
-        <div className='h-[20rem] bg-[#5d617a] w-[16.1rem] 
+        <div className='md:h-[20rem] h-[17rem] w-[11rem] bg-[#5d617a] md:w-[16.1rem] 
           rounded-md flex flex-col cursor-pointer animate-pulse
           hover:scale-x-100'>
           <div className='w-full h-[80%] bg-[#7b80a0] rounded-t-md'></div>
@@ -113,7 +120,7 @@ function App() {
   return (
     <div className='w-full h-fit flex flex-col items-center justify-content mt-2 mb-12'>
       <div className='w-[80%] gap-6 flex flex-col items-center h-fit'>
-        <h1 className=' text-lg'>Rick & Morty's Characters</h1>
+        <h1 className=' text-4xl'>Rick & Morty's Characters</h1>
         <SearchInput handleSearch={handleSearch} />
         {datas ? 
         <CardList datas={datas} loading={loading}/>
