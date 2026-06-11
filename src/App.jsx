@@ -6,7 +6,7 @@ function SearchInput(handleSearch) {
   return (
       <>
         <form 
-        onSubmit={(e) => handleSearch(e)}
+        onSubmit={function(e){handleSearch(e)}}
         action="" className='w-full h-[3.5rem]'>
           <input 
           placeholder="Type a character's name.."
@@ -14,7 +14,7 @@ function SearchInput(handleSearch) {
           type="search" name="name" id="name" />
           <button 
           type='submit'
-          className='w-[10%] bg-[black] h-[100%] rounded-r-md'>
+          className='w-[10%] cursor-pointer  bg-slate-700 hover:bg-slate-500 h-[100%] rounded-r-md'>
             Search
           </button>
         </form>
@@ -43,11 +43,13 @@ function App() {
   
   function handleSearch(e){
     e.preventDefault()
+    const data = new FormData(e.target)
+    console.log(data.get("name"))
   }
 
   return (
     <div className='w-full h-fit flex flex-col items-center justify-content mt-12'>
-      <div className='w-[80%] bg-[yellow]  gap-6 flex flex-col items-center'>
+      <div className='w-[80%] gap-6 flex flex-col items-center'>
         <h1>Rick & Morty's Characters</h1>
         <SearchInput handleSearch={handleSearch} />
 
@@ -57,7 +59,7 @@ function App() {
             datas?.map((item, index) => ((
               <div 
               key={index}
-              className='h-[20rem] bg-white w-[16rem] rounded-md flex flex-col'>
+              className='h-[20rem] bg-white w-[16rem] rounded-md flex flex-col cursor-pointer hover:scale-x-100'>
                   <img src={item?.image} alt="" className='w-full h-[80%] rounded-t-md' />
                   <div className='w-full h-[20%] flex justify-center items-center'>
                       <h4 className='text-slate-900 font-semibold'>{item.name}</h4>
