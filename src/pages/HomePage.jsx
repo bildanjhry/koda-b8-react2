@@ -27,7 +27,7 @@ export default function HomePage() {
   useEffect(() => {
     async function getData(count = 3){
       try{
-        setLoading(true)
+        setLoading(true) // start mounting loading
 
         let apiUrl = `https://rickandmortyapi.com/api/character`
         if(reloadParams) apiUrl = `https://rickandmortyapi.com/api/character?name=${reloadParams}`
@@ -36,7 +36,7 @@ export default function HomePage() {
         const data = await res.json()
         setDatas(data.results)
 
-        setLoading(false)
+        setLoading(false) // unmount loading
       } catch(err){
          if(count >= 1) getData(count-1) // will retry 3 times if error happend
          return console.error(err)
