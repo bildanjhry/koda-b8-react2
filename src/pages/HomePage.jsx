@@ -28,16 +28,17 @@ export default function HomePage() {
     async function getData(count = 3){
       try{
         setLoading(true)
+
         let apiUrl = `https://rickandmortyapi.com/api/character`
         if(reloadParams) apiUrl = `https://rickandmortyapi.com/api/character?name=${reloadParams}`
-
+				
 				const res = await fetch(apiUrl)
         const data = await res.json()
         setDatas(data.results)
+
         setLoading(false)
       } catch(err){
-				 // will retry 3 times if error happend
-         if(count >= 1) getData(count-1)
+         if(count >= 1) getData(count-1) // will retry 3 times if error happend
          return console.error(err)
       }
     } 
@@ -82,12 +83,12 @@ function SearchInput({ref, handleSearch}) {
           <input 
           ref={ref}
           placeholder="Type a character's name.."
-          className='w-[89%] h-[100%] bg-white rounded-md pl-4 pr-4 text-slate-800'
+          className='w-[89%] h-full bg-white rounded-md pl-4 pr-4 text-slate-800'
           type="search" name="search" id="search" />
           <button 
           type='submit'
           className='w-[10%] cursor-pointer flex justify-center items-center 
-          bg-[#7b80a0] hover:bg-slate-500 h-[100%] rounded-md'>
+          bg-[#7b80a0] hover:bg-slate-500 h-full rounded-md'>
             <img src="../public/search-icon.png" alt="" className='w-5 h-5'/>
           </button>
         </form>
@@ -110,7 +111,7 @@ function CardList({datas, loading}) {
           <div 
           key={index}
           onClick={(e) => {handleChooseCard(e)}}
-          className='md:h-[20rem] h-[17rem] w-[11rem] bg-[#7b80a0] md:w-[16.1rem] rounded-md flex flex-col 
+          className='md:h-80 h-68 w-44 bg-[#7b80a0] md:w-[16.1rem] rounded-md flex flex-col 
           cursor-pointer hover:scale-110'>
             <img src={item?.image} alt="" className='w-full h-[80%] rounded-t-md' />
             <div className='w-full h-[20%] flex justify-center items-center'>
